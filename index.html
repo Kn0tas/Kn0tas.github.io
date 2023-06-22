@@ -9,6 +9,10 @@
             .button {
                 margin: 10px;
             }
+            #player {
+                width: 640px;
+                height: 390px;
+            }
         </style>
     </head>
     <body>
@@ -33,3 +37,10 @@
             var player;
             function onYouTubeIframeAPIReady() {
                 player = new YT.Player('player', {
+                    height: '390',
+                    width: '640',
+                    videoId: 'u8ccGjar4Es', // replace with your YouTube video id
+                });
+            }
+
+            // Define button actions
