@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Interactive Video Page</title>
+        <style>
+            #overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .button {
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="player"></div>
+        <div id="overlay">
+            <button id="button1" class="button">1</button>
+            <button id="button2" class="button">2</button>
+            <button id="button3" class="button">3</button>
+            <button id="button4" class="button">4</button>
+            <button id="button5" class="button">5</button>
+        </div>
+
+        <script>
+            // Load the IFrame Player API code asynchronously.
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            // Create an <iframe> (and YouTube player) after API code downloads.
+            var player;
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                    height: '390',
+                    width: '640',
+                    videoId: 'u8ccGjar4Es', // replace with your YouTube video id
+                });
+            }
+
+            // Define button actions
+            document.getElementById('button1').onclick = function() {alert("I can count to one.")};
+            document.getElementById('button2').onclick = function() {alert("I can count to two.")};
+            document.getElementById('button3').onclick = function() {alert("I can count to three.")};
+            document.getElementById('button4').onclick = function() {alert("I can count to four.")};
+            var button5Count = 0;
+            document.getElementById('button5').onclick = function() {
+                if (button5Count == 0) {
+                    alert("I can only count to four.");
+                    button5Count++;
+                } else {
+                    alert("FOUR!");
+                    button5Count = 0;
+                }
+            };
+        </script>
+    </body>
+</html>
